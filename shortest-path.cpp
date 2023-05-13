@@ -5,17 +5,12 @@ using namespace std;
 ll n = 4;
 vector<vector<ll>> mt(n, vector<ll>(n, INT_MAX));
 vector<vector<ll>> nxt(n, vector<ll>(n, INT_MAX));
-// vector<ll> find_path(ll i, ll j) {
-//     vector<ll> path = {i};
-    
-// }
+
 string find_path(int i, int j) {
     string path = string("") + (char)(i+'A');
     if(mt[i][j] == INT_MAX) {
         return "Not found";
     }
-    // dbg(mt[i][j])
-    // return " ";
     while(nxt[i][j] != j) {
         path += (char)(nxt[i][j] + 'A');
         i = nxt[i][j];
@@ -46,12 +41,6 @@ int main() {
                 }
             }
         }
-    }
-    for(auto e : mt) {
-        for(auto f : e) {
-            cerr<< f << " ";
-        }
-        cerr << "\n";
     }
     cout << find_path(0, 3) << endl;
 
