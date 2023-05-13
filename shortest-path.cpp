@@ -20,6 +20,7 @@ string find_path(int i, int j) {
         path += (char)(nxt[i][j] + 'A');
         i = nxt[i][j];
     }
+    path += char(j+'A');
     return path;
 }
 
