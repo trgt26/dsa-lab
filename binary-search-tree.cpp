@@ -87,7 +87,6 @@ void print(node * cr, ll ort) {
     }
     if(ort==1) {
         cout << cr->val << " ";
-
     }
     print(cr->left, ort);
     if(ort==2) {

@@ -8,7 +8,7 @@ vector<vector<ll>> nxt(n, vector<ll>(n, INT_MAX));
 
 string find_path(int i, int j) {
     string path = string("") + (char)(i+'A');
-    if(mt[i][j] == INT_MAX) {
+    if(mt[i][j] == 0) {
         return "Not found";
     }
     while(nxt[i][j] != j) {
@@ -21,8 +21,8 @@ string find_path(int i, int j) {
 
 int main() {
     cin >> n;
-    mt.assign(n, vector<ll>(n, INT_MAX));
-    nxt.assign(n, vector<ll>(n, INT_MAX));
+    mt.assign(n, vector<ll>(n, 0));
+    nxt.assign(n, vector<ll>(n, 0));
     for(ll i=0; i<n; i++) {
         for(ll j=0; j<n; j++) {
             cin >> mt[i][j];
@@ -34,14 +34,15 @@ int main() {
             for(ll j=0; j<n; j++) {
                 if(
                     (mt[i][k] != 0 and mt[k][j] != 0) and
-                    (mt[i][j] == 0 or mt[i][j] > mt[i][k] + mt[k][j])
+                    (mt[i][j] == 0 or  mt[i][k] + mt[k][j] < mt[i][j])
                 ) {
                     mt[i][j] = mt[i][k] + mt[k][j];
+                    
                     nxt[i][j] = nxt[i][k];
                 }
             }
         }
     }
-    cout << find_path(0, 3) << endl;
+    cout << find_path(3, 0) << endl;
 
 }

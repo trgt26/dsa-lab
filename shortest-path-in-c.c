@@ -10,8 +10,6 @@ void find_path(int i, int j, int nxt[][n], int mt[][n]) {
     if(mt[i][j] == 0) {
         return ;
     }
-
-
     path[0] = (char)(i+'A');
     l++;
 
@@ -21,6 +19,7 @@ void find_path(int i, int j, int nxt[][n], int mt[][n]) {
         l++;
         i = nxt[i][j];
     }
+    
     path[l]= (char)(j+'A');
     l++;
 
@@ -36,6 +35,8 @@ int main() {
             nxt[i][j] = j;
         }
     }
+
+
     for(ll k=0; k<n; k++) {
         for(ll i=0; i<n; i++) {
             for(ll j=0; j<n; j++) {
